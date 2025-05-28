@@ -14,4 +14,8 @@ set(MICROROSFLAGS "-DCLOCK_MONOTONIC=0 -D'__attribute__(x)='" CACHE STRING "" FO
 set(CMAKE_C_FLAGS_INIT "-std=c11 ${FLAGS} ${MICROROSFLAGS} " CACHE STRING "" FORCE)
 set(CMAKE_CXX_FLAGS_INIT "-std=c++14 ${FLAGS} -fno-rtti ${MICROROSFLAGS} " CACHE STRING "" FORCE)
 
+include_directories(/stm32_dir/Middlewares/Third_Party/FreeRTOS/Source/include)
+include_directories(/stm32_dir/Core/Inc)
+include_directories(/stm32_dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1)
+
 set(__BIG_ENDIAN__ 0)

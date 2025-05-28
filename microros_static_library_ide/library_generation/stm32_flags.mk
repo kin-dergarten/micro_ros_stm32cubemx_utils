@@ -1,0 +1,1 @@
+-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -DPLATFORM_NAME_FREERTOS
