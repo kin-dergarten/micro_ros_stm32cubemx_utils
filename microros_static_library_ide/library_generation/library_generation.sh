@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e
 
 export BASE_PATH=/project/$MICROROS_LIBRARY_FOLDER
+export STM32_VERSION=1.18.0
 
 ######## Check existing library ########
 if [ -f "$BASE_PATH/libmicroros/libmicroros.a" ]; then
@@ -24,8 +24,29 @@ else
 fi
 
 ######## Init ########
+echo "migrate ros key"
+rm /etc/apt/sources.list.d/ros2*.list
+curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+echo "install dependencies"
 apt-get update
-apt-get install -y gcc-arm-none-eabi
+apt-get install -y gnupg ca-certificates apt-utils apt-transport-https zenity
+
+echo "add nexus repository"
+cp $BASE_PATH/library_generation/nexus-repo-public.gpg.key /tmp/repo.key
+cp $BASE_PATH/library_generation/apt.list /etc/apt/sources.list.d/alpen-apt.list
+
+mkdir -p /etc/apt/keyrings
+cat /tmp/repo.key | gpg --dearmor -o /etc/apt/keyrings/nexus-repo-public.gpg
+apt-get update
+
+echo "install stm32 toolchain"
+export DISPLAY=:0
+yes | apt-get install -y st-stm32cubeclt-$STM32_VERSION
+export PATH=/opt/st/stm32cubeclt_$STM32_VERSION/GNU-tools-for-STM32/bin:$PATH
+
+export TOOLCHAIN_PREFIX=/opt/st/stm32cubeclt_$STM32_VERSION/GNU-tools-for-STM32/bin/arm-none-eabi-
+#export TOOLCHAIN_PREFIX=/usr/bin/arm-none-eabi-
 
 cd /uros_ws
 
@@ -67,8 +88,6 @@ pushd firmware/mcu_ws > /dev/null
 popd > /dev/null
 
 ######## Build  ########
-export TOOLCHAIN_PREFIX=/usr/bin/arm-none-eabi-
-
 if [ ! -z ${MICROROS_USE_EMBEDDEDRTPS+x} ]; then
     ros2 run micro_ros_setup build_firmware.sh $BASE_PATH/library_generation/toolchain.cmake $BASE_PATH/library_generation/colcon-embeddedrtps.meta
 else
