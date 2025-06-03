@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(amb_msgs)
+project(embedded_msgs)
 
 # Default to C99
 if (NOT CMAKE_C_STANDARD)
@@ -24,7 +24,7 @@ find_package(std_msgs REQUIRED)
 
 # declare the message files to generate code for
 set(msg_files
-        "msg/Protobuf.msg"
+        "msg/EmbeddedProtobuf.msg"
 )
 
 rosidl_generate_interfaces(
