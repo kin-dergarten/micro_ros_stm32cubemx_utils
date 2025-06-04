@@ -23,11 +23,8 @@ else
     exit 1;
 fi
 
-######## Init ########
-echo "migrate ros key"
-rm /etc/apt/sources.list.d/ros2*.list
-curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
+######## Init ########
 echo "install dependencies"
 apt-get update
 apt-get install -y gnupg ca-certificates apt-utils apt-transport-https zenity
