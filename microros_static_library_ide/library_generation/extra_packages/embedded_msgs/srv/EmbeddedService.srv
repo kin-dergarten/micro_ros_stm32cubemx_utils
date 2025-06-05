@@ -1,0 +1,5 @@
+#request fields
+embedded_msgs/EmbeddedProto request
+---
+#response fields
+embedded_msgs/EmbeddedProto response

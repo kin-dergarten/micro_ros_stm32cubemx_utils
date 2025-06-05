@@ -4,19 +4,15 @@
   <name>embedded_msgs</name>
   <version>0.0.1</version>
   <description>TODO: Package description</description>
-  <maintainer email="embedded@knapp.com">kin</maintainer>
+  <maintainer email="max.leingartner@knapp.com">kin</maintainer>
   <license>TODO: License declaration</license>
 
   <member_of_group>rosidl_interface_packages</member_of_group>
-
   <depend>std_msgs</depend>
-
   <depend>ament_cmake</depend>
   <depend>rosidl_default_generators</depend>
 
   <depend>rosidl_default_runtime</depend>
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
