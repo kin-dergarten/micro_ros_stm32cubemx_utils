@@ -27,9 +27,15 @@ set(msg_files
         "msg/EmbeddedProtobuf.msg"
 )
 
+# declare the service files to generate code for
+set(srv_files
+        "srv/EmbeddedProtobuf.srv"
+)
+
 rosidl_generate_interfaces(
         ${PROJECT_NAME}
         ${msg_files}
+        ${srv_files}
         DEPENDENCIES
         builtin_interfaces
         std_msgs)
