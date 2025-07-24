@@ -29,13 +29,17 @@ set(srv_files
         "srv/EmbeddedService.srv"
 )
 
+set(action_files
+        "action/EmbeddedAction.action"
+)
+
 find_package(builtin_interfaces REQUIRED)
 find_package(action_msgs REQUIRED)
 rosidl_generate_interfaces(
         ${PROJECT_NAME}
         ${msg_files}
         ${srv_files}
-#        ${action_files}
+        ${action_files}
 #        DEPENDENCIES
 #        builtin_interfaces
 #        action_msgs
