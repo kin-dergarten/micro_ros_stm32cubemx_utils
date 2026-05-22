@@ -34,15 +34,16 @@ set(action_files
 )
 
 find_package(builtin_interfaces REQUIRED)
-find_package(action_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+
 rosidl_generate_interfaces(
         ${PROJECT_NAME}
         ${msg_files}
         ${srv_files}
         ${action_files}
-#        DEPENDENCIES
+        DEPENDENCIES
+        std_msgs
 #        builtin_interfaces
-#        action_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)
