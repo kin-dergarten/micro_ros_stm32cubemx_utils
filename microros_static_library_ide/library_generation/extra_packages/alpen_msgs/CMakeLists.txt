@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(embedded_msgs)
+project(alpen_msgs)
 
 # Default to C99
 if (NOT CMAKE_C_STANDARD)
@@ -22,15 +22,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
-        "msg/EmbeddedProtobuf.msg"
-)
-
-set(srv_files
-        "srv/EmbeddedService.srv"
-)
-
-set(action_files
-        "action/EmbeddedAction.action"
+        "msg/YosemiteSensorData.msg"
 )
 
 find_package(builtin_interfaces REQUIRED)
@@ -39,10 +31,9 @@ find_package(std_msgs REQUIRED)
 rosidl_generate_interfaces(
         ${PROJECT_NAME}
         ${msg_files}
-        ${srv_files}
-        ${action_files}
         DEPENDENCIES
-#        builtin_interfaces
+        std_msgs
+        #        builtin_interfaces
 )
 
 ament_export_dependencies(rosidl_default_runtime)
