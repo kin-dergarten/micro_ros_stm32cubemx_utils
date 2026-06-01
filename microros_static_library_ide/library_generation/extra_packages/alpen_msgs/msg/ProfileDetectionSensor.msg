@@ -1,0 +1,4 @@
+std_msgs/Header header
+
+bool front_profile_detected
+bool rear_profile_detected

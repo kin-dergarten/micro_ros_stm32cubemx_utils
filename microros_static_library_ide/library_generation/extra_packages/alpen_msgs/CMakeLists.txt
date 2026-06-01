@@ -22,7 +22,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
-        "msg/YosemiteSensorData.msg"
+        "msg/GapDetectionSensor.msg"
+        "msg/ProfileDetectionSensor.msg"
+        "msg/ReflectorDetectionSensor.msg"
+    	"msg/EncoderCount.msg"
 )
 
 find_package(builtin_interfaces REQUIRED)

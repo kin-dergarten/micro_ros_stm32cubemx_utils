@@ -1,0 +1,4 @@
+std_msgs/Header header
+
+bool front_reflector_detected
+bool rear_reflector_detected
