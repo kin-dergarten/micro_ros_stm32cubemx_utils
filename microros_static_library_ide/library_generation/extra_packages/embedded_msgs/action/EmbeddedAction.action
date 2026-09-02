@@ -1,8 +1,0 @@
-# request
-embedded_msgs/EmbeddedProtobuf request
----
-# result
-embedded_msgs/EmbeddedProtobuf result
----
-# feedback
-embedded_msgs/EmbeddedProtobuf feedback
